@@ -35,5 +35,6 @@ cmd/dnet/dnet
 # IDE files and folders
 .project
 .settings/
+.idea/
 
 libnetworkbuild.created
