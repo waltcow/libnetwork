@@ -1227,6 +1227,10 @@ func (n *network) ipamAllocate() error {
 }
 
 func (n *network) requestPoolHelper(ipam ipamapi.Ipam, addressSpace, preferredPool, subPool string, options map[string]string, v6 bool) (string, *net.IPNet, map[string]string, error) {
+	poolID, pool, meta, err := ipam.RequestPool(addressSpace, preferredPool, subPool, options, v6)
+	return poolID, pool, meta, err
+	
+	/*
 	for {
 		poolID, pool, meta, err := ipam.RequestPool(addressSpace, preferredPool, subPool, options, v6)
 		if err != nil {
@@ -1265,6 +1269,7 @@ func (n *network) requestPoolHelper(ipam ipamapi.Ipam, addressSpace, preferredPo
 			return "", nil, nil, fmt.Errorf("requested subnet %s overlaps in the host", preferredPool)
 		}
 	}
+	*/
 }
 
 func (n *network) ipamAllocateVersion(ipVer int, ipam ipamapi.Ipam) error {
